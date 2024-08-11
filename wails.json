@@ -1,0 +1,14 @@
+{
+  "$schema": "https://wails.io/schemas/config.v2.json",
+  "name": "Fur",
+  "outputfilename": "Fur",
+  "frontend:install": "npm install",
+  "frontend:build": "npm run build",
+  "frontend:dev:watcher": "npm run dev",
+  "frontend:dev:serverUrl": "auto",
+  "appargs": "--path /home/fiammetta/Documents/Go/Fur/build/bin",
+  "author": {
+    "name": "Sergio",
+    "email": "sagdpr03@gmail.com"
+  }
+}

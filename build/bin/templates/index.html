@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Fur</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="manifest" href="/static/manifest.json" />
+    <script src="/static/htmx.js"></script>
+    <script src="/static/jquery.min.js"></script>
+    <script src="/static/index.js"></script>
+</head>
+
+<body>
+    <div class="cover"></div>
+
+    <div class="header">
+        {{ if eq .Folder "/" }} {{else}}
+        <div class="back" onclick="window.history.back();">
+            <img src="/static/back.svg" alt="back" class="back-button" id="back-button" />
+        </div>
+
+        {{end}}
+        <div class="title">
+            <h3>{{ .Path }}</h3>
+        </div>
+    </div>
+    <div class="sidebar">
+        <!-- Add Search bar with search button -->
+        <div id="search" class="search">
+            <form action="/search" method="get">
+                <input type="text" name="q" id="q" placeholder="Search" class="search-bar" />
+                <button type="submit" class="search-button">
+                    <img src="/static/previews/folder.svg" alt="search" class="search-icon" />
+                </button>
+            </form>
+        </div>
+
+        {{ range .Drives }}
+
+        <div class="drive" onclick="go_home()" hx-post="/setdir/{{.Path}}" hx-trigger="click" hx-swap="innerHTML"
+            hx-target="#holder">
+            {{ .Name }}
+        </div>
+
+        {{ end }}
+    </div>
+    <div id="menu" class="menu">
+        <div id="menu-item" class="menu-item" onclick="new_folder()">
+            <p>New Folder</p>
+        </div>
+    </div>
+
+    <div class="loader" hx-get="/grid{{ .Folder }}" hx-trigger="load" hx-swap="innerHTML" hx-target="#holder"></div>
+
+    <div id="holder"></div>
+</body>
+
+</html>

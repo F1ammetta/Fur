@@ -1,0 +1,344 @@
+/* responsive grid layout, do not go out of bounds grid container class is "grid" and grid item class is "item" 
+ */
+
+.loader {
+  height: 6rem;
+}
+
+body {
+  background-color: #181a1b;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: #181a1b;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* .grid { */
+/*   display: grid; */
+/*   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
+/*   gap: 16px; *
+/* } */
+
+/* Style for each grid item */
+.item {
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #444444;
+  transition: transform 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.item-hide {
+  overflow: hidden;
+  display: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #444444;
+  transition: transform 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+
+
+/* Style for the image inside each grid item */
+.item-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  margin: 0;
+}
+
+header {
+  position: fixed;
+  left: env(titlebar-area-x, 0);
+  top: env(titlebar-area-y, 0);
+  width: env(titlebar-area-width, 100%);
+  height: env(titlebar-area-height, 30px);
+}
+
+.item:hover {
+  transform: scale(1.1);
+  transition: transform 0.5s ease-in-out;
+}
+
+
+.item-name {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #444444;
+  padding: 0.5rem;
+  border-radius: 8px 8px 0 0;
+}
+
+.item-ext {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #444444;
+  padding: 0.5rem;
+  border-radius: 0 0 8px 8px;
+}
+
+.item-size {
+  font-size: 0.7rem;
+  font-weight: regular;
+  color: #fff;
+  background-color: #444444;
+  padding: 0.5rem;
+  border-radius: 0 0 8px 8px;
+}
+
+.menu {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  top: 0;
+  left: 0;
+  width: 10rem;
+  height: 16rem;
+  background-color: #333;
+  padding: 1rem;
+  border-radius: 8px;
+  z-index: 3;
+  display: none;
+}
+
+.menu-item {
+  cursor: pointer;
+  color: #fff;
+  border: 1px solid #454354;
+}
+
+
+/* div { */
+/*   -webkit-user-select: none; */
+/*   /* Safari */ 
+/*   -ms-user-select: none; */
+/*   /* IE 10 and IE 11 */ 
+/*   user-select: none; */
+/*   /* Standard syntax */ 
+/* } */
+
+/* [data-hx-swap][data-hx-target]:focus { */
+/*   outline: none !important; */
+/*   border: none !important; */
+/*   box-shadow: none !important; */
+/**/
+/*   /* Add any other styles you want to override */ 
+/* } */
+
+
+/* the cover element goes under the header, also has fixed position, and is same color as background, z index 1 */
+.cover {
+  position: fixed;
+  top: 0;
+  left: 14.5rem;
+  /* same as sidebar width */
+  width: calc(100% - 200px);
+  /* subtract sidebar width */
+  height: 5rem;
+  background-color: #181a1b;
+  z-index: 1;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  padding: 0.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  left: 14.5rem;
+  width: calc(100% - 16.5rem);
+  color: #fff;
+  height: 5rem;
+  margin: 0.5rem;
+  background-color: #333;
+  border-radius: 8px 8px 8px 8px;
+  z-index: 2;
+}
+
+.header .back {
+  flex: auto;
+  /* don't grow, don't shrink, auto basis */
+  max-height: 100%;
+  /* prevent it from outgrowing the parent in terms of height */
+  max-width: 1rem;
+  cursor: pointer;
+  /* prevent it from outgrowing the parent in terms of width */
+}
+
+.header .title {
+  flex: 1 0 auto;
+  /* grow, don't shrink, auto basis */
+  text-align: center;
+  margin-right: 4rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 4fr));
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+  grid-auto-flow: dense;
+  margin-top: 10px;
+  padding: 10px;
+  margin-left: 14.5rem;
+  /* same as sidebar width */
+}
+
+.name {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 13rem;
+  /* adjust as needed */
+  overflow-y: auto;
+  /* add scroll bar if content overflows */
+  background-color: #333;
+  border-right: 1px solid #454354;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* adjust as needed */
+  padding: 10px;
+}
+
+.search {
+  display: flex;
+  flex-direction: row;
+  top: 5rem;
+  width: 10rem;
+  padding: 10px;
+  background-color: #333;
+  border-radius: 8px;
+  z-index: 4;
+  pointer-events: auto;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 10px;
+  background-color: #333;
+  border-radius: 8px;
+  color: #fff;
+  border: 1px solid #454354;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.search-bar:focus {
+  outline: none;
+  border: 1px solid #454354;
+}
+
+.search-bar::placeholder {
+  color: #fff;
+}
+
+.search-bar:focus::placeholder {
+  color: #fff;
+}
+
+.search-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #333;
+  border-radius: 8px;
+  color: #fff;
+  border: 1px solid #454354;
+  cursor: pointer;
+}
+
+.drive {
+  padding: 10px;
+  /* border-bottom: 1px solid #181a1b; */
+  background-color: #181a1b;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  color: #fff;
+  /* adjust as needed */
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.logo {
+  display: block;
+  max-width: 100%;
+  /* adjust as needed */
+  height: auto;
+  /* adjust as needed */
+  margin: 0 auto 20px;
+  /* adjust as needed */
+  cursor: pointer;
+}
+
+.drive:hover {
+  background-color: #444444;
+  transition: background-color 0.2s ease-in-out;
+  /* adjust as needed */
+}
+
+/* This applies to the whole page */
+::-webkit-scrollbar {
+  width: 10px;
+  /* width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #181a1b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  /* color of the scroll thumb */
+  border-radius: 4px;
+  /* roundness of the scroll thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  /* color of the scroll thumb when hovering */
+}
+
+/* This applies to the sidebar */
+.sidebar::-webkit-scrollbar {
+  width: 10px;
+  /* width of the entire scrollbar */
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: #181a1b;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #888;
+  /* color of the scroll thumb */
+  border-radius: 4px;
+  /* roundness of the scroll thumb */
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  /* color of the scroll thumb when hovering */
+}

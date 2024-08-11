@@ -1,0 +1,16 @@
+{
+  "name": "XFS",
+  "description": "File explorer",
+  "lang": "en-US",
+  "start_url": "/",
+  "theme_color": "#333",
+  "background_color": "#181a1b",
+  "display_override": [
+    "window-controls-overlay"
+  ],
+  "icons": [{
+      "src": "/static/folder.png",
+      "type": "image/png", "sizes": "512x512"
+    }
+  ]
+}
