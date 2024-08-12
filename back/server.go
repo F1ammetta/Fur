@@ -63,6 +63,11 @@ func Run(port int, path string) {
 		grid(c)
 	})
 
+	r.GET("/search", func(c *gin.Context) {
+		query := c.Query("q")
+		fmt.Println("Searching for: ", query)
+	})
+
 	r.StaticFS("/static", http.Dir(run_dir+string(os.PathSeparator)+"static"))
 
 	r.GET("/files/*path", func(c *gin.Context) {
