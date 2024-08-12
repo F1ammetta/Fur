@@ -57,13 +57,6 @@ html {
   margin: 0;
 }
 
-header {
-  position: fixed;
-  left: env(titlebar-area-x, 0);
-  top: env(titlebar-area-y, 0);
-  width: env(titlebar-area-width, 100%);
-  height: env(titlebar-area-height, 30px);
-}
 
 .item:hover {
   transform: scale(1.1);
@@ -122,22 +115,22 @@ header {
 }
 
 
-/* div { */
-/*   -webkit-user-select: none; */
-/*   /* Safari */ 
-/*   -ms-user-select: none; */
-/*   /* IE 10 and IE 11 */ 
-/*   user-select: none; */
-/*   /* Standard syntax */ 
-/* } */
+div {
+  -webkit-user-select: none;
+  /* Safari */
+  -ms-user-select: none;
+  /* IE 10 and IE 11 */
+  user-select: none;
+  /* Standard syntax */
+}
 
-/* [data-hx-swap][data-hx-target]:focus { */
-/*   outline: none !important; */
-/*   border: none !important; */
-/*   box-shadow: none !important; */
-/**/
-/*   /* Add any other styles you want to override */ 
-/* } */
+[data-hx-swap][data-hx-target]:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  /* Add any other styles you want to override */
+}
 
 
 /* the cover element goes under the header, also has fixed position, and is same color as background, z index 1 */
@@ -162,7 +155,7 @@ header {
   padding-left: 2rem;
   padding-right: 2rem;
   left: 14.5rem;
-  width: calc(100% - 16.5rem);
+  width: 69%;
   color: #fff;
   height: 5rem;
   margin: 0.5rem;
@@ -227,8 +220,9 @@ header {
 .search {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   top: 5rem;
-  width: 10rem;
+  width: 11rem;
   padding: 10px;
   background-color: #333;
   border-radius: 8px;
@@ -245,6 +239,7 @@ header {
   border: 1px solid #454354;
   z-index: 10;
   pointer-events: auto;
+  user-select: auto;
 }
 
 .search-bar:focus {
@@ -260,15 +255,24 @@ header {
   color: #fff;
 }
 
-.search-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #333;
-  border-radius: 8px;
-  color: #fff;
-  border: 1px solid #454354;
-  cursor: pointer;
+input {
+  -webkit-user-select: auto;
+  /* Safari */
+  -ms-user-select: auto;
+  /* IE 10 and IE 11 */
+  user-select: auto;
+  /* Standard syntax */
 }
+
+/* .search-button { */
+/*   width: 100%; */
+/*   padding: 10px; */
+/*   background-color: #333; */
+/*   border-radius: 8px; */
+/*   color: #fff; */
+/*   border: 1px solid #454354; */
+/*   cursor: pointer; */
+/* } */
 
 .drive {
   padding: 10px;

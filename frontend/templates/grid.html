@@ -1,0 +1,18 @@
+<div class="grid">
+    {{ range .Files }}
+    <div {{ if .Hide }} class="item-hide" {{ else }} class="item" {{ end }} {{if .IsDir}}
+        onclick="window.location.href='{{.Url}}'" {{else}} onclick="$.get('/files{{.Url}}')" {{end}}>
+        {{ if .IsDir }}
+        <img class="item-img" src="/static/previews/folder.svg" loading="lazy" alt="" />
+        {{ else }}
+        <img class="item-img" src="/previews{{ .Url }}_preview.png" loading="lazy" alt="" />
+        {{ end }}
+        <div class="item-name">{{ .Noext }}</div>
+        {{ if not .IsDir }}
+        <div class="item-ext">{{ .Ext }}</div>
+        <div class="item-size">{{ .Size }} MB</div>
+        {{ end }}
+    </div>
+    {{ end }}
+    <div id="blank"></div>
+</div>

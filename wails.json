@@ -6,7 +6,7 @@
   "frontend:build": "npm run build",
   "frontend:dev:watcher": "npm run dev",
   "frontend:dev:serverUrl": "auto",
-  "appargs": "--path /home/fiammetta/Documents/Go/Fur/build/bin",
+  "appargs": "--path frontend",
   "author": {
     "name": "Sergio",
     "email": "sagdpr03@gmail.com"

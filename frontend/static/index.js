@@ -2,7 +2,7 @@ if ("serviceWorker" in navigator) {
     window.addEventListener("load", function() {
         navigator.serviceWorker
             .register("/static/service-worker.js")
-            .then((res) => console.log("service worker registered"))
+            .then((_) => console.log("service worker registered"))
             .catch((err) =>
                 console.log("service worker not registered", err),
             );
@@ -19,24 +19,59 @@ self.addEventListener("fetch", (fetchEvent) => {
 
 function go_home() {
     // make POST request to /gohome, which will redirect to /
-    $.post("/gohome", function(data, status) {
+    $.post("/gohome", function(_, _) {
         window.location.href = "/";
     });
 }
 
 var menu_shown = false;
 
+function get_drive_under_mouse(event) {
+    var drive = document.getElementsByClassName("drive");
+    for (var i = 0; i < drive.length; i++) {
+        var rect = drive[i].getBoundingClientRect();
+        if (
+            event.clientX >= rect.left &&
+            event.clientX <= rect.right &&
+            event.clientY >= rect.top &&
+            event.clientY <= rect.bottom
+        ) {
+            selected_drive = drive[i].getAttribute("hx-post");
+            return drive[i];
+        }
+    }
+    return null;
+}
+
 function show_menu(event) {
     var menu = document.getElementById("menu");
+    if (get_drive_under_mouse(event) != null) {
+        menu.children.namedItem("index").style.display = "block";
+    } else {
+        menu.children.namedItem("index").style.display = "none";
+    }
     menu.style.display = "block";
     menu.style.left = event.clientX + "px";
     menu.style.top = event.clientY + "px";
     menu_shown = true;
 }
 
+var selected_drive = null;
+
+function index_drive() {
+    selected_drive = selected_drive.replace("/setdir/", "");
+    console.log("indexing drive: " + selected_drive);
+    // TODO: make POST request to /indexdrive with selected_drive as data
+    // let the user know that the drive is being indexed
+
+    selected_drive = null;
+}
+
 function hide_menu() {
     var menu = document.getElementById("menu");
+    menu.children.namedItem("index").style.display = "none";
     menu.style.display = "none";
+    selected_drive = null;
     menu_shown = false;
 }
 
@@ -64,8 +99,6 @@ function new_folder() {
 function mouse_handler(event) {
     switch (event.button) {
         case 0:
-            event.preventDefault();
-            event.stopImmediatePropagation();
             if (menu_shown && !mouse_inside_menu(event)) {
                 hide_menu();
             }
@@ -77,6 +110,7 @@ function mouse_handler(event) {
         case 2:
             // trigger menu
             event.preventDefault();
+            event.stopImmediatePropagation();
             switch (menu_shown) {
                 case true:
                     hide_menu();
