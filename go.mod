@@ -7,6 +7,7 @@ toolchain go1.22.6
 require (
 	github.com/gin-gonic/gin v1.10.0
 	github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646
+	github.com/ulikunitz/xz v0.5.12
 	github.com/wailsapp/wails/v2 v2.9.1
 )
 
